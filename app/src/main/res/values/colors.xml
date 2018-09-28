@@ -3,4 +3,50 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="bg_screen1">#E5EAEC</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="icon_color">#12255C</color>
+    <color name="bg_icon_color">#cfd8dc</color>
+    <color name="text_color">#888A8A</color>
+    <color name="yellow">#FFCA1C</color>
+    <color name="orange">#fa9509</color>
+    <color name="white">#fff</color>
+    <color name="colorWhite">#fff</color>
+    <color name="medium_grey">#efefef</color>
+    <color name="grey">#888A8A</color>
+
+    <color name="from">#000000</color>
+    <color name="subject">#111111</color>
+    <color name="timestamp">#4285f4</color>
+    <color name="message">#7a7a7a</color>
+    <color name="icon_tint_normal">#7a7a7a</color>
+    <color name="icon_tint_selected">#fed776</color>
+    <color name="row_activated">#e0e0e0</color>
+    <color name="bg_action_mode">#757575</color>
+    <color name="bg_circle_default">#666666</color>
+
+    <color name="grey_3">#f7f7f7</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+
+    <color name="dark_tranparent">#3c000000</color>
+    <color name="colorGreen">#3cea2f</color>
+    <color name="colorRed">#ed1c24</color>
+    <color name="blue">#31BBD5</color>
+    <color name="colorDarkGray">#b3b3b3</color>
+    <color name="colorGray">#e7e8e9</color>
+
+    <color name="nilai_a">#50C3C6</color>
+    <color name="toolbar_bg">#676B6D</color>
+    <color name="selected_side_menu_bg">#E7E9EB</color>
+    <color name="produk_title">#4c4c4c</color>
+    <color name="produk_title_semitransparent">#ac767676</color>
+    <color name="viewBg">#f1f5f8</color>
 </resources>
