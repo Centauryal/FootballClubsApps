@@ -1,10 +1,10 @@
-package com.centaury.footballclubsapps.data.model
+package com.centaury.footballclubsapps.data.model.league
 
 import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName
 
 @Generated("com.robohorse.robopojogenerator")
-data class PremierLeague(
+data class League(
 
 	@field:SerializedName("teams")
 	val teams: List<TeamsItem>

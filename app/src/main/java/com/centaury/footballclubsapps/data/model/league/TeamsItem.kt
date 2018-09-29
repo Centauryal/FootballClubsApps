@@ -1,4 +1,4 @@
-package com.centaury.footballclubsapps.data.model
+package com.centaury.footballclubsapps.data.model.league
 
 import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName

@@ -1,6 +1,6 @@
 package com.centaury.footballclubsapps.ui.view.home
 
-import com.centaury.footballclubsapps.data.model.TeamsItem
+import com.centaury.footballclubsapps.data.model.league.TeamsItem
 
 /**
  * Created by Centaury on 23/09/2018.

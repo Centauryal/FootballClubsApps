@@ -8,14 +8,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.centaury.footballclubsapps.R
-import com.centaury.footballclubsapps.data.model.TeamsItem
-import com.centaury.footballclubsapps.ui.adapter.PremierLeagueAdapter.TeamViewHolder
+import com.centaury.footballclubsapps.data.model.league.TeamsItem
+import com.centaury.footballclubsapps.ui.adapter.LeagueAdapter.TeamViewHolder
 import org.jetbrains.anko.*
 
 /**
  * Created by Centaury on 23/09/2018.
  */
-class PremierLeagueAdapter(private val teams: List<TeamsItem>) : RecyclerView.Adapter<TeamViewHolder>(){
+class LeagueAdapter(private val teams: List<TeamsItem>) : RecyclerView.Adapter<TeamViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         return TeamViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))

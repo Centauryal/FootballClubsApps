@@ -4,63 +4,43 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.view.MenuItem
 import com.centaury.footballclubsapps.R
-import com.centaury.footballclubsapps.utils.*
+import com.centaury.footballclubsapps.ui.view.schedule.ScheduleFragment
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
-    private val KEY_POSITION = "keyPosition"
-    private var navPosition: BottomNavigationPosition = BottomNavigationPosition.HOME
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigationView = findViewById(R.id.navigationView)
-        initBottomNavigation()
-        initFragment(savedInstanceState)
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationSelected)
+
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
-        // Store the current navigation position.
-        outState?.putInt(KEY_POSITION, navPosition.id)
-        super.onSaveInstanceState(outState)
-    }
-
-    private fun restoreSaveInstanceState(savedInstanceState: Bundle?) {
-        // Restore the current navigation position.
-        savedInstanceState?.also {
-            val id = it.getInt(KEY_POSITION, BottomNavigationPosition.HOME.id)
-            navPosition = findNavigationPositionById(id)
+    private val navigationSelected = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when(item.itemId){
+            R.id.navigation_home -> {
+                val mainFragment = MainFragment.newInstance()
+                openFragment(mainFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_schedule -> {
+                val scheduleFragment = ScheduleFragment.newInstance()
+                openFragment(scheduleFragment)
+                return@OnNavigationItemSelectedListener true
+            }
         }
+        false
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        navPosition = findNavigationPositionById(item.itemId)
-        return switchFragment(navPosition)
+    private fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
-    private fun initBottomNavigation(){
-        bottomNavigationView.disableShiftMode()
-        bottomNavigationView.active(navPosition.position)
-        bottomNavigationView.setOnNavigationItemSelectedListener(this)
-    }
-
-    private fun initFragment(savedInstanceState: Bundle?){
-        savedInstanceState ?: switchFragment(BottomNavigationPosition.HOME)
-    }
-    private fun switchFragment(navPosition: BottomNavigationPosition): Boolean{
-        return supportFragmentManager.findFragment(navPosition).let {
-            if (it.isAdded) return false
-            supportFragmentManager.detach() // Extension function
-            supportFragmentManager.attach(it, navPosition.getTag()) // Extension function
-            supportFragmentManager.executePendingTransactions()
-        }
-    }
-
-    private fun FragmentManager.findFragment(position: BottomNavigationPosition): Fragment{
-        return findFragmentByTag(position.getTag()) ?:position.createFragment()
-    }
 }

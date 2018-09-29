@@ -1,6 +1,6 @@
 package com.centaury.footballclubsapps.ui.view.home
 
-import com.centaury.footballclubsapps.data.model.PremierLeague
+import com.centaury.footballclubsapps.data.model.league.League
 import com.centaury.footballclubsapps.data.service.ApiRepository
 import com.centaury.footballclubsapps.data.service.TheSportDBApi
 import com.google.gson.Gson
@@ -19,7 +19,7 @@ class MainPresenter(private val view: MainView,
         doAsync {
             val data = gson.fromJson(apiRepository
                     .doRequest(TheSportDBApi.getTeams(league)),
-                    PremierLeague::class.java
+                    League::class.java
             )
 
             uiThread {
