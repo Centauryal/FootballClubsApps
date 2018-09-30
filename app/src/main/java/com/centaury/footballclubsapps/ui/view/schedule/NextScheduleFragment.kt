@@ -14,7 +14,9 @@ import com.centaury.footballclubsapps.R
 import com.centaury.footballclubsapps.data.model.nextschedule.NextItem
 import com.centaury.footballclubsapps.data.service.ApiRepository
 import com.centaury.footballclubsapps.ui.adapter.NextScheduleAdapter
+import com.centaury.footballclubsapps.ui.view.detail.DetailScheduleActivity
 import com.google.gson.Gson
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
 class NextScheduleFragment : Fragment(), NextScheduleView {
@@ -33,7 +35,9 @@ class NextScheduleFragment : Fragment(), NextScheduleView {
         listLastSchedule = view.findViewById(R.id.recyc_next) as RecyclerView
         swipeRefresh = view.findViewById(R.id.swipenext) as SwipeRefreshLayout
 
-        nextscheduleAdapter = NextScheduleAdapter(events)
+        nextscheduleAdapter = NextScheduleAdapter(events) {
+            context?.startActivity<DetailScheduleActivity>("detailEvent" to "${it.idEvent}")
+        }
         listLastSchedule.layoutManager = LinearLayoutManager(context)
         listLastSchedule.adapter = nextscheduleAdapter
 

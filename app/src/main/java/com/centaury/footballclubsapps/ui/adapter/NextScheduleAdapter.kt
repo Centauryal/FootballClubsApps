@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_schedule.view.*
 /**
  * Created by Centaury on 30/09/2018.
  */
-class NextScheduleAdapter(private val nextMatch: List<NextItem>): RecyclerView.Adapter<ViewHolder>() {
+class NextScheduleAdapter(private val nextMatch: List<NextItem>, private val listener: (NextItem) -> Unit)
+    : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_schedule, parent, false)
@@ -22,17 +23,20 @@ class NextScheduleAdapter(private val nextMatch: List<NextItem>): RecyclerView.A
     override fun getItemCount(): Int = nextMatch.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(nextMatch[position])
+        holder.bindItem(nextMatch[position], listener)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-        fun bindItem(nextMatch: NextItem) {
+        fun bindItem(nextMatch: NextItem, listener: (NextItem) -> Unit) {
             itemView.last_date.text = nextMatch.dateEvent
             itemView.name_club_home.text = nextMatch.strHomeTeam
-            itemView.score_club_home.text = nextMatch.intHomeScore.toString()
+            itemView.score_club_home.text = nextMatch.intHomeScore
             itemView.name_club_away.text = nextMatch.strAwayTeam
-            itemView.score_club_away.text = nextMatch.intAwayScore.toString()
+            itemView.score_club_away.text = nextMatch.intAwayScore
+            itemView.setOnClickListener {
+                listener(nextMatch)
+            }
         }
     }
 }

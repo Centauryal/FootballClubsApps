@@ -52,7 +52,7 @@ data class NextItem(
 	val idHomeTeam: String? = null,
 
 	@field:SerializedName("intHomeScore")
-	val intHomeScore: Any? = null,
+	val intHomeScore: String? = null,
 
 	@field:SerializedName("dateEvent")
 	val dateEvent: String? = null,
@@ -151,7 +151,7 @@ data class NextItem(
 	val strLeague: String? = null,
 
 	@field:SerializedName("intAwayScore")
-	val intAwayScore: Any? = null,
+	val intAwayScore: String? = null,
 
 	@field:SerializedName("strCity")
 	val strCity: Any? = null,

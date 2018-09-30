@@ -41,7 +41,13 @@ class MainFragment : Fragment(), MainView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        
+
+        val view: View = MainFragmentUI().createView(AnkoContext.Companion.create(inflater.context, this, false))
+
+        listTeam = view.findViewById(R.id.list_main) as RecyclerView
+        progressBar = view.findViewById(R.id.progress_main) as ProgressBar
+        swipeRefresh = view.findViewById(R.id.swipemain) as SwipeRefreshLayout
+        spinner = view.findViewById(R.id.spinner_main) as Spinner
 
         adapter = LeagueAdapter(teams)
         listTeam.adapter = adapter
@@ -68,40 +74,47 @@ class MainFragment : Fragment(), MainView {
             presenter.getTeamList(leagueName)
         }
 
-        return UI {
-            verticalLayout {
-                lparams(width = matchParent, height = wrapContent)
-                orientation = LinearLayout.VERTICAL
-                topPadding = dip(16)
-                rightPadding = dip(16)
-                leftPadding = dip(16)
+        return view
+    }
 
-                spinner{
-                    id = R.id.spinner_main
-                }
-                swipeRefreshLayout {
-                    id = R.id.swipemain
-                    setColorSchemeResources(colorAccent,
-                            android.R.color.holo_green_light,
-                            android.R.color.holo_orange_light,
-                            android.R.color.holo_red_light)
+    class MainFragmentUI : AnkoComponent<MainFragment>{
+        override fun createView(ui: AnkoContext<MainFragment>): View {
+            return with(ui){
+                verticalLayout {
+                    lparams(width = matchParent, height = wrapContent)
+                    orientation = LinearLayout.VERTICAL
+                    topPadding = dip(16)
+                    rightPadding = dip(16)
+                    leftPadding = dip(16)
 
-                    relativeLayout {
-                        lparams(width = matchParent, height = wrapContent)
+                    spinner{
+                        id = R.id.spinner_main
+                    }
+                    swipeRefreshLayout {
+                        id = R.id.swipemain
+                        setColorSchemeResources(colorAccent,
+                                android.R.color.holo_green_light,
+                                android.R.color.holo_orange_light,
+                                android.R.color.holo_red_light)
 
-                        recyclerView {
-                            id = R.id.list_main
+                        relativeLayout {
                             lparams(width = matchParent, height = wrapContent)
-                            layoutManager = LinearLayoutManager(ctx)
-                        }
 
-                        progressBar {
-                            id = R.id.progress_main
-                        }.lparams { centerHorizontally() }
+                            recyclerView {
+                                id = R.id.list_main
+                                lparams(width = matchParent, height = wrapContent)
+                                layoutManager = LinearLayoutManager(ctx)
+                            }
+
+                            progressBar {
+                                id = R.id.progress_main
+                            }.lparams { centerHorizontally() }
+                        }
                     }
                 }
             }
-        }.view
+        }
+
     }
 
     override fun showLoading() {

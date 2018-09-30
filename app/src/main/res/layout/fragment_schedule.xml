@@ -13,11 +13,11 @@
         android:layout_height="57dp"
         android:background="#fff"
         android:elevation="3dp"
-        android:padding="10dp"
+        android:padding="5dp"
         app:tabBackground="@drawable/tab_selector"
-        app:tabMode="fixed"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabIndicatorHeight="0dp"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="#fff">
 
     </android.support.design.widget.TabLayout>
