@@ -31,12 +31,11 @@ class DetailSchedulePresenter(private val view: DetailScheduleView,
     fun getDetailEvent(idEvent: String){
         doAsync {
             val data = gson.fromJson(apiRepository
-                    .doRequest(TheSportDBApi.getDetailTeam(idEvent)),
+                    .doRequest(TheSportDBApi.getDetailEvent(idEvent)),
                     DetailEvent::class.java
             )
-
             uiThread {
-                view.showDetailEvent(data.events.first())
+                view.getDetailEvent(data.events.first())
             }
         }
     }

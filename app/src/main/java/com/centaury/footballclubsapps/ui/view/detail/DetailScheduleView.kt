@@ -1,6 +1,6 @@
 package com.centaury.footballclubsapps.ui.view.detail
 
-import com.centaury.footballclubsapps.data.model.event.DetailEventsItem
+import com.centaury.footballclubsapps.data.model.event.EventsItem
 import com.centaury.footballclubsapps.data.model.team.DetailTeamsItem
 
 /**
@@ -8,5 +8,5 @@ import com.centaury.footballclubsapps.data.model.team.DetailTeamsItem
  */
 interface DetailScheduleView {
     fun showTeam(data: DetailTeamsItem)
-    fun showDetailEvent(data: DetailEventsItem)
+    fun getDetailEvent(data: EventsItem)
 }

@@ -1,22 +1,20 @@
 package com.centaury.footballclubsapps.ui.view.detail
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.centaury.footballclubsapps.R
-import com.centaury.footballclubsapps.data.model.event.DetailEventsItem
+import com.centaury.footballclubsapps.data.model.event.EventsItem
 import com.centaury.footballclubsapps.data.model.team.DetailTeamsItem
 import com.centaury.footballclubsapps.data.service.ApiRepository
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail_schedule.*
-import kotlinx.android.synthetic.main.item_schedule.*
-import org.jetbrains.anko.act
 import org.jetbrains.anko.ctx
 
 class DetailScheduleActivity : AppCompatActivity(), DetailScheduleView {
 
     private lateinit var detailPresenter: DetailSchedulePresenter
+    private lateinit var events: EventsItem
     private var idEvent: String = ""
     private var idTeamHome: String = ""
     private var idTeamAway: String = ""
@@ -46,16 +44,16 @@ class DetailScheduleActivity : AppCompatActivity(), DetailScheduleView {
         }
     }
 
-    override fun showDetailEvent(data: DetailEventsItem) {
+    override fun getDetailEvent(data: EventsItem) {
         idTeamHome = data.idHomeTeam.toString()
         idTeamAway = data.idAwayTeam.toString()
 
         when(data.idEvent){
             idEvent -> {
-                name_club_home.text = data.strHomeTeam
-                score_club_home.text = data.intHomeScore
-                name_club_away.text = data.strHomeTeam
-                score_club_away.text = data.intAwayScore
+                detail_name_home.text = data.strHomeTeam
+                detail_score_home.text = data.intHomeScore
+                detail_name_away.text = data.strHomeTeam
+                detail_score_away.text = data.intAwayScore
                 detail_league.text = data.strLeague
                 detail_date.text = data.dateEvent
             }
@@ -64,4 +62,5 @@ class DetailScheduleActivity : AppCompatActivity(), DetailScheduleView {
         detailPresenter.getTeam(idTeamHome)
         detailPresenter.getTeam(idTeamAway)
     }
+
 }
