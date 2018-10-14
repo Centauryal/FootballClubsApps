@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_schedule.view.*
 /**
  * Created by Centaury on 29/09/2018.
  */
-class LastScheduleAdapter(private val lastMatch: List<EventsItem>): RecyclerView.Adapter<ViewHolder>() {
+class LastScheduleAdapter(private val lastMatch: List<EventsItem>, private val listener: (EventsItem) -> Unit)
+    : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_schedule, parent, false)
@@ -22,18 +23,20 @@ class LastScheduleAdapter(private val lastMatch: List<EventsItem>): RecyclerView
     override fun getItemCount(): Int = lastMatch.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        holder.bindItem(lastMatch[position])
+        holder.bindItem(lastMatch[position], listener)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-        fun bindItem(lastMatch: EventsItem) {
+        fun bindItem(lastMatch: EventsItem, listener: (EventsItem) -> Unit) {
             itemView.last_date.text = lastMatch.dateEvent
             itemView.name_club_home.text = lastMatch.strHomeTeam
             itemView.score_club_home.text = lastMatch.intHomeScore
             itemView.name_club_away.text = lastMatch.strAwayTeam
             itemView.score_club_away.text = lastMatch.intAwayScore
+            itemView.setOnClickListener {
+                listener(lastMatch)
+            }
         }
     }
 }

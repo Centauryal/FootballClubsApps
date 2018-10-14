@@ -172,7 +172,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:text="Possession"
+                android:text="@string/possession"
                 android:textStyle="bold" />
 
             <TextView
@@ -201,7 +201,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:text="Shot On Target"
+                android:text="@string/shot_on_target"
                 android:textStyle="bold" />
 
             <TextView
@@ -230,7 +230,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:text="Shot Off Target"
+                android:text="@string/shot_off_target"
                 android:textStyle="bold" />
 
             <TextView
@@ -259,7 +259,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:text="Yellow Card"
+                android:text="@string/yellow_card"
                 android:textStyle="bold" />
 
             <TextView
@@ -288,7 +288,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:text="Red Card"
+                android:text="@string/red_card"
                 android:textStyle="bold" />
 
             <TextView

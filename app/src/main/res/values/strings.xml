@@ -45,4 +45,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="schedule">Schedule</string>
+    <string name="possession">Possession</string>
+    <string name="shot_on_target">Shot On Target</string>
+    <string name="shot_off_target">Shot Off Target</string>
+    <string name="yellow_card">Yellow Card</string>
+    <string name="red_card">Red Card</string>
+    <string name="_22_september_2018">22 September 2018</string>
+    <string name="arsenal_fc">Arsenal FC</string>
+    <string name="barcelona_fc">Barcelona FC</string>
+    <string name="pinned">Pinned</string>
+    <string name="bookmark">Bookmark</string>
 </resources>

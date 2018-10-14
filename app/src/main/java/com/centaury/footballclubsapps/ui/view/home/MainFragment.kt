@@ -49,7 +49,9 @@ class MainFragment : Fragment(), MainView {
         swipeRefresh = view.findViewById(R.id.swipemain) as SwipeRefreshLayout
         spinner = view.findViewById(R.id.spinner_main) as Spinner
 
-        adapter = LeagueAdapter(teams)
+        adapter = LeagueAdapter(teams){
+            ctx.startActivity<TeamDetailActivity>("id" to "${it.idTeam}")
+        }
         listTeam.adapter = adapter
 
         val request = ApiRepository()

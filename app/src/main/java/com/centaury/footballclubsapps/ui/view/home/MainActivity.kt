@@ -1,15 +1,23 @@
 package com.centaury.footballclubsapps.ui.view.home
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.view.Menu
+import android.view.MenuItem
 import com.centaury.footballclubsapps.R
+import com.centaury.footballclubsapps.ui.view.pinned.PinnedFragment
 import com.centaury.footballclubsapps.ui.view.schedule.ScheduleFragment
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.noButton
+import org.jetbrains.anko.yesButton
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
+    private var menuItem: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +41,11 @@ class MainActivity : AppCompatActivity() {
                 openFragment(scheduleFragment)
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_pinned -> {
+                val pinnedFragment = PinnedFragment.newInstance()
+                openFragment(pinnedFragment)
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }
@@ -45,4 +58,24 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
+    override fun onBackPressed() {
+        val frag = supportFragmentManager.findFragmentById(R.id.container)
+        val frags = frag.javaClass.simpleName
+        if (fragmentManager.backStackEntryCount > 0){
+            fragmentManager.popBackStack()
+        } else{
+            if (frags.equals("MainFragment")){
+                alert("Are you sure want to exit application? ") {
+                    yesButton {
+                        finish()
+                    }
+                    noButton {
+
+                    }
+                }.show()
+            } else{
+                super.onBackPressed()
+            }
+        }
+    }
 }

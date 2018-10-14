@@ -14,7 +14,9 @@ import com.centaury.footballclubsapps.R
 import com.centaury.footballclubsapps.data.model.lastschedule.EventsItem
 import com.centaury.footballclubsapps.data.service.ApiRepository
 import com.centaury.footballclubsapps.ui.adapter.LastScheduleAdapter
+import com.centaury.footballclubsapps.ui.view.detail.DetailScheduleActivity
 import com.google.gson.Gson
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
 class LastScheduleFragment : Fragment(), LastScheduleView {
@@ -33,7 +35,9 @@ class LastScheduleFragment : Fragment(), LastScheduleView {
         listLastSchedule = view.findViewById(R.id.recyc_last) as RecyclerView
         swipeRefresh = view.findViewById(R.id.swipelast) as SwipeRefreshLayout
 
-        lastScheduleAdapter = LastScheduleAdapter(events)
+        lastScheduleAdapter = LastScheduleAdapter(events){
+            context?.startActivity<DetailScheduleActivity>("detailEvent" to "${it.idEvent}")
+        }
         listLastSchedule.layoutManager = LinearLayoutManager(context)
         listLastSchedule.adapter = lastScheduleAdapter
 
